@@ -1,63 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Covid 19</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>간단한 지도 표시하기</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=lmp52pzuxg"></script>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
     <style>
-        *{margin: 0; padding: 0; list-style: none;}
-        ul{display: flex; justify-content: space-around; text-align: center; width: 600px; margin: 0 auto;}
-
-        .decide {
-            color: rgb(223, 35, 35);
-        }
-        .exam{
-            color: rgb(236, 172, 53);
-        }
-        .clear{
-            color: rgb(49, 49, 238);
-        }
-        ul > li > span {
-            font-size: 14px;
-        }
-        ul>li>p{
-            font-size: 12px;
-        }
+      
     </style>
 </head>
 <body>
-
-     <div class="container">
-         <header class="site_header"></header>
-         <section class="container">
-             <article class="content">
-                 <ul class="covidTable">
-                     <li class="decide">
-                        <span>확진환자</span>
-                        <h3><%= decideCnt %></h3>
-                        <p><%= plusDecideCnt %> ▲</p>
-                     </li>
-                     <li class="exam">
-                        <span>검사중</span>
-                        <h3><%= examCnt %></h3>
-                        <p><%= plusExamCnt %> ▲</p>
-                     </li>
-                     <li class="clear">
-                        <span>격리해제</span>
-                        <h3><%= clearCnt %></h3>
-                        <p><%= plusClearCnt %> ▲</p>
-                     </li>
-                     <li class="death">
-                        <span>사망자</span>
-                        <h3><%= deathCnt %></h3>
-                        <p><%= plusDeathCnt %> ▲</p>
-                     </li>
-                 </ul>
-             </article>
-         </section>
-     </div>
-     <footer class="site_footer"></footer>
+  <div class="container">
+    <div class="navbar">
+      <article class="content">
+          <ul class="covidTable">
+              <li class="decide">
+                 <span>확진환자</span>
+                 <h3><%= decideCnt %></h3>
+                 <p><%= plusDecideCnt %> ▲</p>
+              </li>
+              <li class="exam">
+                 <span>검사중</span>
+                 <h3><%= examCnt %></h3>
+                 <p><%= plusExamCnt %> ▲</p>
+              </li>
+              <li class="clear">
+                 <span>격리해제</span>
+                 <h3><%= clearCnt %></h3>
+                 <p><%= plusClearCnt %> ▲</p>
+              </li>
+              <li class="death">
+                 <span>사망자</span>
+                 <h3><%= deathCnt %></h3>
+                 <p><%= plusDeathCnt %> ▲</p>
+              </li>
+          </ul>
+      </article>
+    </div>
+    <div class="infobox">
+      <div class="infoTitle">현재날짜</div>
+      <div class="infoTitle"><%= day2 %></div>
+    </div>
+    <div id="map" style="width:100%;height:100%;"></div>
+  </div>
+  <!-- data -->
 </body>
 <script>
+  var data = [
+    {
+        title : "서울",
+        content : "서울 남산",
+        date : "2020-11-23",
+        lat : 37.550027,
+        lng : 126.992739
+    },
+    {
+        title : '서울',
+        content : "녹사평역",
+        date : "2020-11-23",
+        lat : 37.534680,
+        lng : 126.986688
+    }
+]
 </script>
+
+<script src="/js/map.js"></script>
 </html>
