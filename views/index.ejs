@@ -8,35 +8,58 @@
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=lmp52pzuxg"></script>
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <style>
-      
+      header{
+        width: 100%;
+        height: 100vh;
+        /* background-image: linear-gradient(to right ,red, orange, yellow, green, blue, purple); */
+        background: #ccc;
+        margin: 0 auto;
+      }
     </style>
 </head>
 <body>
+  <header></header>
   <div class="container">
     <div class="navbar">
       <article class="content">
-          <ul class="covidTable">
-              <li class="decide">
-                 <span>확진환자</span>
-                 <h3><%= decideCnt %></h3>
-                 <p><%= plusDecideCnt %> ▲</p>
-              </li>
-              <li class="exam">
-                 <span>검사중</span>
-                 <h3><%= examCnt %></h3>
-                 <p><%= plusExamCnt %> ▲</p>
-              </li>
-              <li class="clear">
-                 <span>격리해제</span>
-                 <h3><%= clearCnt %></h3>
-                 <p><%= plusClearCnt %> ▲</p>
-              </li>
-              <li class="death">
-                 <span>사망자</span>
-                 <h3><%= deathCnt %></h3>
-                 <p><%= plusDeathCnt %> ▲</p>
-              </li>
-          </ul>
+        <ul class="covidTable">
+          <li class="decide">
+             <span>확진환자</span>
+             <h3><%= decideCnt %></h3>
+             <% if(plusDecideCnt > 0) { %>
+              <p><%= plusDecideCnt %> ▲</p>
+             <% } else { %>
+              <p><%= plusDecideCnt %> ▼</p>
+             <% } %>
+          </li>
+          <li class="exam">
+             <span>검사중</span>
+             <h3><%= examCnt %></h3>
+             <% if(plusExamCnt > 0) { %>
+              <p><%= plusExamCnt %> ▲</p>
+             <% } else { %>
+              <p><%= plusExamCnt %> ▼</p>
+             <% } %>
+          </li>
+          <li class="clear">
+             <span>격리해제</span>
+             <h3><%= clearCnt %></h3>
+             <% if(plusClearCnt > 0) { %>
+              <p><%= plusClearCnt %> ▲</p>
+             <% } else { %>
+              <p><%= plusClearCnt %> ▼</p>
+             <% } %>
+          </li>
+          <li class="death">
+             <span>사망자</span>
+             <h3><%= deathCnt %></h3>
+             <% if(plusDeathCnt > 0) { %>
+              <p><%= plusDeathCnt %> ▲</p>
+             <% } else { %>
+              <p><%= plusDeathCnt %> ▼</p>
+             <% } %>
+          </li>
+      </ul>
       </article>
     </div>
     <div class="infobox">
@@ -48,13 +71,22 @@
   <!-- data -->
 </body>
 <script>
+  const region = '서울'
+  const place = '서울 금천 디지털 컴플렉스'
+  const date = '오늘'
+  const lat = 37.485017
+  const lon = 126.901248
+
+  // for문을 이용하여 template에 region[i] 이런식으로 넣으면 될 것 같긴 함
+
   var data = [
     {
-        title : "서울",
-        content : "서울 남산",
-        date : "2020-11-23",
-        lat : 37.550027,
-        lng : 126.992739
+      // axios fetch 후 for : axiosData(i) ↓ 대입
+        title : "서울", // region
+        content : "서울 남산", // place
+        date : "2020-11-23", // date
+        lat : 37.550027, //lat
+        lng : 126.992739 // lat -> lon
     },
     {
         title : '서울',
@@ -62,9 +94,38 @@
         date : "2020-11-23",
         lat : 37.534680,
         lng : 126.986688
-    }
+    },
+    {
+        title : '서울',
+        content : "상봉",
+        date : "2020-11-23",
+        lat : 37.596062,
+        lng : 127.085510
+    },
+    {
+        title : '서울',
+        content : "가산",
+        date : "2020-11-23",
+        lat : 37.479135,
+        lng : 126.883928
+    },
+    {
+        title : '서울',
+        content : "종로",
+        date : "2020-11-23",
+        lat : 37.595341, 
+        lng : 126.977854
+    },
+    {
+        title : region,
+        content : place,
+        date : date,
+        lat : lat, 
+        lng : lon
+    },
 ]
 </script>
 
 <script src="/js/map.js"></script>
+<script src="/js/api.js"></script>
 </html>
