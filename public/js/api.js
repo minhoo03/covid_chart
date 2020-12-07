@@ -70,6 +70,8 @@ window.addEventListener("scroll" , function() {
     text_relactive.style.animation="fadeInRotate 1s 0.3s forwards"
 
     document.body.style.background = "#353535"
+  } else if(scrollTop == 0){
+    document.body.style.background = "#000000"
   }
 
     // scorllTop / (전체 화면 높이 - 실제 보이는 화면 높이) * 100

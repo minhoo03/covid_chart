@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    text-decoration: none;
 }
+
 /* map 전체 틀 */
 .container {
     position: relative;
@@ -198,7 +200,7 @@ header {
 .intro_title {
     position: absolute;
     color: #fff;
-    top: 20px;
+    top: 40px;
 }
 
 /* animation */
