@@ -7,67 +7,93 @@
     <title>간단한 지도 표시하기</title>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=lmp52pzuxg"></script>
     <link rel="stylesheet" href="/stylesheets/styles.css">
-    <style>
-      header{
-        width: 100%;
-        height: 100vh;
-        /* background-image: linear-gradient(to right ,red, orange, yellow, green, blue, purple); */
-        background: #ccc;
-        margin: 0 auto;
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
+    <script src="/js/api.js"></script>
 </head>
 <body>
-  <header></header>
-  <div class="container">
-    <div class="navbar">
-      <article class="content">
-        <ul class="covidTable">
-          <li class="decide">
-             <span>확진환자</span>
-             <h3><%= decideCnt %></h3>
-             <% if(plusDecideCnt > 0) { %>
-              <p><%= plusDecideCnt %> ▲</p>
-             <% } else { %>
-              <p><%= plusDecideCnt %> ▼</p>
-             <% } %>
-          </li>
-          <li class="exam">
-             <span>검사중</span>
-             <h3><%= examCnt %></h3>
-             <% if(plusExamCnt > 0) { %>
-              <p><%= plusExamCnt %> ▲</p>
-             <% } else { %>
-              <p><%= plusExamCnt %> ▼</p>
-             <% } %>
-          </li>
-          <li class="clear">
-             <span>격리해제</span>
-             <h3><%= clearCnt %></h3>
-             <% if(plusClearCnt > 0) { %>
-              <p><%= plusClearCnt %> ▲</p>
-             <% } else { %>
-              <p><%= plusClearCnt %> ▼</p>
-             <% } %>
-          </li>
-          <li class="death">
-             <span>사망자</span>
-             <h3><%= deathCnt %></h3>
-             <% if(plusDeathCnt > 0) { %>
-              <p><%= plusDeathCnt %> ▲</p>
-             <% } else { %>
-              <p><%= plusDeathCnt %> ▼</p>
-             <% } %>
-          </li>
-      </ul>
-      </article>
-    </div>
-    <div class="infobox">
-      <div class="infoTitle">현재날짜</div>
-      <div class="infoTitle"><%= day2 %></div>
-    </div>
-    <div id="map" style="width:100%;height:100%;"></div>
-  </div>
+  <div class="progress">
+    <div class="bar"></div>
+</div>
+<div class="wrap">
+    <header class="snap" style="background-color: #000;">
+        <div class="layer"></div>
+        <img src="./img/if_covid19.png" alt="text_if" class="text_if">
+        <img src="./img/pipe.png" alt="pipe" class="pipe">
+        <img src="./img/doctor_black.jpg" alt="wall" class="bg">     
+    </header>
+
+    <section class="snap intro_snap" style="overflow: hidden;">
+        <img src="./img/seoulMap.png" alt="map" class="seoulMap">
+
+       
+        <div class="intro" >
+            <h1 class="intro_title">dummy Text</h1>
+            <div class="covid_relactive">
+                <img src="./img/covid_noBg.png" alt="covid19Bg" class="covid19_2 covid19">
+                <img src="./img/covid_noBg.png" alt="covid19Bg" class="covid19_1 covid19">
+                <img src="./img/covid_noBg.png" alt="covid19Bg" class="covid19_3 covid19">
+            </div>
+            <div class="text_relactive">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla consequuntur illum expedita quis laboriosam molestiae laudantium. Vel quia quidem alias dolorem rerum totam explicabo amet culpa odit, dolores officia eum?
+                Eum dolorem hic quos assumenda officiis omnis vel delectus asperiores voluptates ipsam. Tenetur sequi nam ex aliquid fugit unde voluptatibus, error, porro cupiditate officiis eius animi, molestiae enim quos corporis.
+                Possimus et aliquam veritatis quis. Id fugit nobis culpa commodi quidem corporis minima maiores? Totam, vero, similique veritatis exercitationem ad recusandae placeat quasi dolorum alias eligendi quas, sequi labore nam!</p>
+            </div>
+        </div>
+    </section>
+    <section class="snap">
+      <div class="container">
+        <div class="navbar">
+          <article class="content">
+            <ul class="covidTable">
+              <li class="decide">
+                 <span>확진환자</span>
+                 <h3><%= decideCnt %></h3>
+                 <% if(plusDecideCnt > 0) { %>
+                  <p><%= plusDecideCnt %> ▲</p>
+                 <% } else { %>
+                  <p><%= plusDecideCnt %> ▼</p>
+                 <% } %>
+              </li>
+              <li class="exam">
+                 <span>검사중</span>
+                 <h3><%= examCnt %></h3>
+                 <% if(plusExamCnt > 0) { %>
+                  <p><%= plusExamCnt %> ▲</p>
+                 <% } else { %>
+                  <p><%= plusExamCnt %> ▼</p>
+                 <% } %>
+              </li>
+              <li class="clear">
+                 <span>격리해제</span>
+                 <h3><%= clearCnt %></h3>
+                 <% if(plusClearCnt > 0) { %>
+                  <p><%= plusClearCnt %> ▲</p>
+                 <% } else { %>
+                  <p><%= plusClearCnt %> ▼</p>
+                 <% } %>
+              </li>
+              <li class="death">
+                 <span>사망자</span>
+                 <h3><%= deathCnt %></h3>
+                 <% if(plusDeathCnt > 0) { %>
+                  <p><%= plusDeathCnt %> ▲</p>
+                 <% } else { %>
+                  <p><%= plusDeathCnt %> ▼</p>
+                 <% } %>
+              </li>
+          </ul>
+          </article>
+        </div>
+        <div class="infobox">
+          <div class="infoTitle">현재날짜</div>
+          <div class="infoTitle"><%= day2 %></div>
+        </div>
+        <div id="map" style="width:100%;height:100%;"></div>
+      </div>
+    </section>
   <!-- data -->
 </body>
 <script>
