@@ -86,7 +86,7 @@ window.addEventListener("scroll" , function() {
   scale_video.style.transform = "scale("+ (scrollTop/1000) +")";
   parallax_title.style.transform = `translate(0, ${scrollTop / 8}px)`
   parallax_title2.style.transform = `translate(0, ${scrollTop / 8}px)`
-  nasa.style.transform = `translate(0, ${scrollTop / -4}px) rotate(${scrollTop/5}deg)`
+  nasa.style.transform = `translate(0, ${scrollTop / -2}px) rotate(${scrollTop/6}deg)`
 
   // scorllTop / (전체 화면 높이 - 실제 보이는 화면 높이) * 100
   let persent = Math.ceil(scrollTop / (document.body.scrollHeight - window.outerHeight) * 100)
