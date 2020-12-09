@@ -98,7 +98,7 @@ window.addEventListener("scroll" , function() {
     title.style.animation="fadeUpOp1 1s 0.3s forwards"
     nasa.style.animation="fadeUpOp1 1s 0.3s forwards"
   }
-  if(persent >= 42){
+  if(persent >= 35){
     console.log('이벤트 발동!')
     first_parallax.style.animation="fadeUpOp2 1s 0.3s forwards"
   } else if(persent < 25){
@@ -107,7 +107,7 @@ window.addEventListener("scroll" , function() {
     second_parallax.style.animation="fadeOutOp1 2s 2s forwards"
   }
 
-  if(persent >= 60){
+  if(persent >= 50){
     second_parallax.style.animation="fadeUpOp2 1s 0.3s forwards"
   }
 
