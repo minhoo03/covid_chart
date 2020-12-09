@@ -15,7 +15,7 @@
 }
 /* 확진자 표 */
 .navbar {
-    z-index: 600;
+    z-index: 950;
     position: absolute;
     top: 0;
     z-index: 100;
@@ -434,7 +434,7 @@ header {
     left: 50%;
     right: 50%;
     transform: translate(-50%, -50%);
-    z-index: 100;
+    z-index: 90;
 }
 
 @keyframes rotateAuto {
@@ -462,5 +462,15 @@ header {
     position: absolute;
     right: 100px;
     top: 100px;
+    z-index: 700;
     opacity: 0;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        font-size: 12px;
+    }
+    .navbar ul {
+        width: 400px;
+    }
 }
