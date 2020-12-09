@@ -14,6 +14,7 @@
 }
 /* 확진자 표 */
 .navbar {
+    z-index: 600;
     position: absolute;
     top: 0;
     z-index: 100;
@@ -158,7 +159,7 @@ header {
     align-items: center;
 }
 
-.intro > div{
+.intro > div {
     margin: 80px;
 }
 
@@ -197,10 +198,31 @@ header {
     margin: 10px;
 }
 
-.intro_title {
+/* .intro_title {
     position: absolute;
     color: #fff;
     top: 40px;
+    z-index: 505;
+} */
+
+.intro_title {
+    position: absolute;
+    top: 40px;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center; /* 가운데 정렬 */
+    letter-spacing: 3px; /* 글자간 간격 */
+    padding-bottom: 100px;
+}
+
+.intro_title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 8px;
+    margin: 4px auto;
+    background-image: linear-gradient(to right, black, gray, white);
 }
 
 /* animation */
@@ -291,7 +313,7 @@ header {
     .text_relactive {
         margin: 0 auto;
     }
-    .intro > div{
+    .intro > div {
         margin: 0;
     }
 }

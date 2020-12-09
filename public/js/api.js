@@ -6,6 +6,7 @@ let covid19_2
 let covid19_3
 let seoulMap
 let text_relactive
+let logoNav
 
 let x = 0
 let y = 0
@@ -22,7 +23,7 @@ window.onload = function(){
   covid19_3 = document.getElementsByClassName("covid19_3")[0]
   seoulMap = document.getElementsByClassName("seoulMap")[0]
   text_relactive = document.getElementsByClassName("text_relactive")[0]
- 
+  logoNav = document.getElementsByClassName("logoNav")[0]
 
   // 이 함수 실행 중 X : 마우스 움직일 시 mouseFunc 실행
   window.addEventListener("mousemove", mouseFunc, false)
@@ -72,35 +73,42 @@ window.addEventListener("scroll" , function() {
     document.body.style.background = "#353535"
   } else if(scrollTop == 0){
     document.body.style.background = "#000000"
-  }
+  } 
 
     // scorllTop / (전체 화면 높이 - 실제 보이는 화면 높이) * 100
     let persent = Math.ceil(scrollTop / (document.body.scrollHeight - window.outerHeight) * 100)
     bar.style.width = `${persent}%`
 
-    // console.log(`${persent}%`)
+    console.log(`${persent}%`)
 
 });
 
-// $(document).ready(function() {
-//   $("html").niceScroll({cursorwidth: '10px', autohidemode: false, zindex: 999 });
-// });
+$(document).ready(function() {
+  $("html").niceScroll({cursorwidth: '10px', autohidemode: false, zindex: 999 });
+});
 
-let cnt = 0
+// let cnt = 0
 
-$('html, body').on('mousewheel', (e) => {
-  // 휠업 양수, 휠다운 음수
-  let wheel = e.originalEvent.wheelDelta
-  console.log(wheel)
-  // 휠업
-  if(wheel > 1 && cnt >=1){ // snap class의 cnt번째의 top을 구함
-    $('html, body').stop().animate({scrollTop:$('.snap').eq(cnt-1).offset().top})
-    cnt--
-    console.log("cnt"+cnt)                                                                                                                                                                                                                                                                   
-  // 휠다운
-  } else if(wheel < 1 && cnt < $('.snap').length){
-    $('html, body').stop().animate({scrollTop:$('.snap').eq(cnt).offset().top})
-    cnt++
-    console.log("cnt"+cnt)
-  }
-})
+// $('html, body').on('mousewheel', (e) => {
+//   // 휠업 양수, 휠다운 음수
+//   let wheel = e.originalEvent.wheelDelta
+//   console.log(wheel)
+//   // 휠업
+//   if(wheel > 1 && cnt >=1){ // snap class의 cnt번째의 top을 구함
+//     $('html, body').stop().animate({scrollTop:$('.snap').eq(cnt-1).offset().top})
+//     cnt--
+//     console.log("cnt"+cnt)                                                                                                                                                                                                                                                                   
+//   // 휠다운
+//   } else if(wheel < 1 && cnt < $('.snap').length){
+//     $('html, body').stop().animate({scrollTop:$('.snap').eq(cnt).offset().top})
+//     cnt++
+//     console.log("cnt"+cnt)
+//   }
+// })
+
+// 버거메뉴
+function menuToggle() {
+  document.getElementById('list').classList.toggle('show');
+}
+
+document.getElementById('menu').addEventListener('click', menuToggle);
