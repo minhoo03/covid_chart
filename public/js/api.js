@@ -4,12 +4,15 @@ let bg
 let seoulMap
 let text_relactive
 let logoNav
+let nasa
 
 let scale_video
 let title
 
 let first_parallax
 let parallax_title
+let second_parallax
+let parallax_title2
 
 let x = 0
 let y = 0
@@ -22,6 +25,8 @@ window.onload = function(){
   pipe = document.getElementsByClassName('pipe')[0]
   bg = document.getElementsByClassName('bg')[0]
   text_if = document.getElementsByClassName("text_if")[0]
+  nasa = document.getElementsByClassName("nasa")[0]
+  
 
   scale_video  = document.getElementsByClassName("scale_video")[0]
   title  = document.getElementsByClassName("title")[0]
@@ -29,7 +34,8 @@ window.onload = function(){
   first_parallax  = document.getElementsByClassName("first_parallax")[0]
   parallax_title  = document.getElementsByClassName("parallax_title")[0]
 
-
+  second_parallax  = document.getElementsByClassName("second_parallax")[0]
+  parallax_title2  = document.getElementsByClassName("parallax_title2")[0]
 
 
   seoulMap = document.getElementsByClassName("seoulMap")[0]
@@ -55,8 +61,7 @@ function loop(){
   pipe.style.transform = `translate(${mx/14}px, ${my/15}px)`
   bg.style.transform = `translate(${-mx/24}px, ${-my/24}px)`
 
-
-
+  title.style.transform = "translate3d("+ -(mx/4) +"px,0px,0) rotate3d(0,1,0,"+ -mx / 20 +"deg)";
 
   // seoulMap.style.transform = `translate3d(${-mx/2}px, ${-my/2}px, 0) rotate3d(0,1,0,${-mx/50}deg)`
 
@@ -75,6 +80,8 @@ window.addEventListener("scroll" , function() {
 
   scale_video.style.transform = "scale("+ (scrollTop/1000) +")";
   parallax_title.style.transform = `translate(0, ${scrollTop / 8}px)`
+  parallax_title2.style.transform = `translate(0, ${scrollTop / 8}px)`
+  nasa.style.transform = `translate(0, ${scrollTop / -4}px) rotate(${scrollTop/5}deg)`
 
   // scorllTop / (전체 화면 높이 - 실제 보이는 화면 높이) * 100
   let persent = Math.ceil(scrollTop / (document.body.scrollHeight - window.outerHeight) * 100)
@@ -84,6 +91,7 @@ window.addEventListener("scroll" , function() {
 
   if(persent >= 6) {
     title.style.animation="fadeUpOp1 1s 0.3s forwards"
+    nasa.style.animation="fadeUpOp1 1s 0.3s forwards"
   }
   if(persent >= 35){
     console.log('이벤트 발동!')
@@ -91,6 +99,15 @@ window.addEventListener("scroll" , function() {
   } else if(persent < 25){
     console.log('이벤트 취소!')
     first_parallax.style.animation="fadeOutOp1 2s 2s forwards"
+    second_parallax.style.animation="fadeOutOp1 2s 2s forwards"
+  }
+
+  if(persent >= 55){
+    second_parallax.style.animation="fadeUpOp2 1s 0.3s forwards"
+  }
+
+  if(persent >= 83){
+    
   }
 
 });
@@ -124,3 +141,23 @@ function menuToggle() {
 }
 
 document.getElementById('menu').addEventListener('click', menuToggle);
+
+// typing
+// var typingBool = false; 
+// var typingIdx=0; 
+// var typingTxt = $(".title").text(); // 타이핑될 텍스트를 가져온다 
+// typingTxt=typingTxt.split(""); // 한글자씩 자른다. 
+// if(typingBool==false){ // 타이핑이 진행되지 않았다면 
+//    typingBool=true; 
+   
+//    var tyInt = setInterval(typing,100); // 반복동작 
+//  } 
+ 
+//  function typing(){ 
+//    if(typingIdx<typingTxt.length){ // 타이핑될 텍스트 길이만큼 반복 
+//      $(".title_typing").append(typingTxt[typingIdx]); // 한글자씩 이어준다. 
+//      typingIdx++; 
+//    } else{ 
+//      clearInterval(tyInt); //끝나면 반복종료 
+//    } 
+//  }  
