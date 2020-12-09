@@ -14,6 +14,9 @@ let parallax_title
 let second_parallax
 let parallax_title2
 
+
+let protect_title
+
 let x = 0
 let y = 0
 let mx = 0
@@ -37,6 +40,8 @@ window.onload = function(){
   second_parallax  = document.getElementsByClassName("second_parallax")[0]
   parallax_title2  = document.getElementsByClassName("parallax_title2")[0]
 
+  protect_title = document.getElementsByClassName("protect_title")[0]
+  
 
   seoulMap = document.getElementsByClassName("seoulMap")[0]
   text_relactive = document.getElementsByClassName("text_relactive")[0]
@@ -93,7 +98,7 @@ window.addEventListener("scroll" , function() {
     title.style.animation="fadeUpOp1 1s 0.3s forwards"
     nasa.style.animation="fadeUpOp1 1s 0.3s forwards"
   }
-  if(persent >= 35){
+  if(persent >= 42){
     console.log('이벤트 발동!')
     first_parallax.style.animation="fadeUpOp2 1s 0.3s forwards"
   } else if(persent < 25){
@@ -102,12 +107,12 @@ window.addEventListener("scroll" , function() {
     second_parallax.style.animation="fadeOutOp1 2s 2s forwards"
   }
 
-  if(persent >= 55){
+  if(persent >= 60){
     second_parallax.style.animation="fadeUpOp2 1s 0.3s forwards"
   }
 
-  if(persent >= 83){
-    
+  if(persent >= 79){
+    protect_title.style.animation="fadeUpOp1 1s forwards"
   }
 
 });
@@ -161,3 +166,6 @@ document.getElementById('menu').addEventListener('click', menuToggle);
 //      clearInterval(tyInt); //끝나면 반복종료 
 //    } 
 //  }  
+
+// motion
+
