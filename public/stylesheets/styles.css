@@ -3,6 +3,7 @@
     padding: 0;
     list-style: none;
     text-decoration: none;
+    overflow: hidden;
 }
 
 /* map 전체 틀 */
@@ -142,89 +143,6 @@ header {
 
 /* 2.snap */
 
-.seoulMap {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
-    opacity: 0;
-    transition: 3s;
-}
-
-.intro {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.intro > div {
-    margin: 80px;
-}
-
-.covid_relactive {
-    position: relative;
-}
-
-.covid19_1 {
-    opacity: 0;
-    width: 400px;
-    height: 300px;
-}
-.covid19_2 {
-    position: absolute;
-    left: 0%;
-    top: 40%;
-    opacity: 0;
-    width: 200px;
-    z-index: 20;
-}
-.covid19_3 {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    opacity: 0;
-    width: 130px;
-}
-
-/* text */
-.text_relactive {
-    min-width: 400px;
-    max-width: 400px;
-    padding: 40px;
-    background: #fff;
-    opacity: 0;
-    margin: 10px;
-}
-
-/* .intro_title {
-    position: absolute;
-    color: #fff;
-    top: 40px;
-    z-index: 505;
-} */
-
-.intro_title {
-    position: absolute;
-    top: 40px;
-    color: white;
-    font-size: 32px;
-    font-weight: bold;
-    text-align: center; /* 가운데 정렬 */
-    letter-spacing: 3px; /* 글자간 간격 */
-    padding-bottom: 100px;
-}
-
-.intro_title::after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 8px;
-    margin: 4px auto;
-    background-image: linear-gradient(to right, black, gray, white);
-}
-
 /* animation */
 
 @keyframes upDown {
@@ -284,13 +202,55 @@ header {
     }
 }
 
-@keyframes fadeUp {
+@keyframes fadeUp_Tang {
     0% {
         margin-top: 150px;
     }
     65% {
         margin-bottom: 200px;
     }
+    100% {
+        margin-bottom: 150px;
+    }
+}
+@keyframes fadeUpOp1 {
+    0% {
+        margin-top: 100px;
+    }
+
+    100% {
+        margin-bottom: 100px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUpOp2 {
+    0% {
+        margin-top: 150px;
+    }
+
+    100% {
+        margin-bottom: 150px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutOp1 {
+    0% {
+        margin-bottom: 150px;
+    }
+
+    100% {
+        margin-top: 150px;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeUp {
+    0% {
+        margin-top: 150px;
+    }
+
     100% {
         margin-bottom: 150px;
     }
@@ -302,19 +262,6 @@ header {
     }
     .pipe {
         display: none;
-    }
-
-    .covid19_1,
-    .covid19_2,
-    .covid19_3 {
-        display: none;
-    }
-
-    .text_relactive {
-        margin: 0 auto;
-    }
-    .intro > div {
-        margin: 0;
     }
 }
 
@@ -338,4 +285,71 @@ header {
     left: 0;
     background: yellow;
     z-index: 501;
+}
+
+/* section_site */
+.site_section {
+    width: 100%;
+    height: 600vh;
+}
+
+.title {
+    transition: 1s;
+    opacity: 0;
+}
+
+.intro_title {
+    margin: 150px 0px 150px 0px;
+    padding: 120px 0px 120px 0px;
+    height: 100px;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+}
+
+.scale_content {
+    position: relative;
+    padding-top: 200px;
+    overflow: hidden;
+}
+
+.scale_video {
+    pointer-events: none;
+    height: 500px;
+    text-align: center;
+}
+
+/* section > parallax */
+
+.parallax {
+    margin: 300px 0px 300px 0px;
+}
+
+.first_parallax {
+    opacity: 0;
+    position: relative;
+    height: 1000px;
+}
+
+.parallax_title {
+    position: absolute;
+    /* top: 200px; */
+    right: 30%;
+    text-align: right;
+    z-index: 900;
+    font-size: 40px;
+}
+
+.parallax_title a {
+    color: #fff;
+}
+
+.parallax_box > h2 > img {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    width: 500px;
+    height: 700px;
+    object-fit: fill;
+    z-index: 800;
 }

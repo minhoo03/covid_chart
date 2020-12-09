@@ -1,12 +1,15 @@
 let text_if
 let pipe
 let bg
-let covid19_1
-let covid19_2
-let covid19_3
 let seoulMap
 let text_relactive
 let logoNav
+
+let scale_video
+let title
+
+let first_parallax
+let parallax_title
 
 let x = 0
 let y = 0
@@ -15,12 +18,20 @@ let my = 0
 let speed = 0.015
 
 window.onload = function(){
+  // class 는 중첩 (배열로 넘어옴)
   pipe = document.getElementsByClassName('pipe')[0]
   bg = document.getElementsByClassName('bg')[0]
   text_if = document.getElementsByClassName("text_if")[0]
-  covid19_1 = document.getElementsByClassName("covid19_1")[0]
-  covid19_2 = document.getElementsByClassName("covid19_2")[0]
-  covid19_3 = document.getElementsByClassName("covid19_3")[0]
+
+  scale_video  = document.getElementsByClassName("scale_video")[0]
+  title  = document.getElementsByClassName("title")[0]
+
+  first_parallax  = document.getElementsByClassName("first_parallax")[0]
+  parallax_title  = document.getElementsByClassName("parallax_title")[0]
+
+
+
+
   seoulMap = document.getElementsByClassName("seoulMap")[0]
   text_relactive = document.getElementsByClassName("text_relactive")[0]
   logoNav = document.getElementsByClassName("logoNav")[0]
@@ -43,9 +54,9 @@ function loop(){
   text_if.style.transform = `translate(${-mx/5}px, ${-my/5}px)`
   pipe.style.transform = `translate(${mx/14}px, ${my/15}px)`
   bg.style.transform = `translate(${-mx/24}px, ${-my/24}px)`
-  covid19_1.style.transform = `translate(${-mx/24}px, ${-my/8}px)`
-  covid19_2.style.transform = `translate(${-mx/16}px, ${-my/7}px)`
-  covid19_3.style.transform = `translate(${-mx/12}px, ${-my/6}px)`
+
+
+
 
   // seoulMap.style.transform = `translate3d(${-mx/2}px, ${-my/2}px, 0) rotate3d(0,1,0,${-mx/50}deg)`
 
@@ -60,26 +71,27 @@ let bar = document.getElementsByClassName('bar')[0]
 window.addEventListener("scroll" , function() {
 
   let scrollTop = document.documentElement.scrollTop;
-  // console.log(scrollTop)
+  console.log(scrollTop)
 
-  if (scrollTop > 550) {
-    // class 는 중첩 (배열로 넘어옴)
-    document.getElementsByClassName('seoulMap')[0].style.animation="fadeInOp5 2s forwards"
-    covid19_1.style.animation="fadeIn 2s 1s forwards, upDown 3s 0s infinite alternate, fadeUp 0.75s 1s forwards"
-    covid19_2.style.animation="fadeIn 2s 1s forwards, upDown 3s 0s infinite alternate, fadeUp 0.75s 1s forwards"
-    covid19_3.style.animation="fadeIn 2s 1s forwards, upDown 3s 0s infinite alternate, fadeUp 0.75s 1s forwards"
-    text_relactive.style.animation="fadeInRotate 1s 0.3s forwards"
+  scale_video.style.transform = "scale("+ (scrollTop/1000) +")";
+  parallax_title.style.transform = `translate(0, ${scrollTop / 8}px)`
 
-    document.body.style.background = "#353535"
-  } else if(scrollTop == 0){
-    document.body.style.background = "#000000"
-  } 
+  // scorllTop / (전체 화면 높이 - 실제 보이는 화면 높이) * 100
+  let persent = Math.ceil(scrollTop / (document.body.scrollHeight - window.outerHeight) * 100)
+  bar.style.width = `${persent}%`
 
-    // scorllTop / (전체 화면 높이 - 실제 보이는 화면 높이) * 100
-    let persent = Math.ceil(scrollTop / (document.body.scrollHeight - window.outerHeight) * 100)
-    bar.style.width = `${persent}%`
+  console.log(`${persent}%`)
 
-    console.log(`${persent}%`)
+  if(persent >= 6) {
+    title.style.animation="fadeUpOp1 1s 0.3s forwards"
+  }
+  if(persent >= 35){
+    console.log('이벤트 발동!')
+    first_parallax.style.animation="fadeUpOp2 1s 0.3s forwards"
+  } else if(persent < 25){
+    console.log('이벤트 취소!')
+    first_parallax.style.animation="fadeOutOp1 2s 2s forwards"
+  }
 
 });
 
