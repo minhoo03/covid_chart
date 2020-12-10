@@ -83,7 +83,7 @@ window.addEventListener("scroll" , function() {
   let scrollTop = document.documentElement.scrollTop;
   console.log(scrollTop)
 
-  scale_video.style.transform = "scale("+ (scrollTop/1000) +")";
+  scale_video.style.transform = "scale("+ (scrollTop/1100) +")";
   parallax_title.style.transform = `translate(0, ${scrollTop / 8}px)`
   parallax_title2.style.transform = `translate(0, ${scrollTop / 8}px)`
   nasa.style.transform = `translate(0, ${scrollTop / -2}px) rotate(${scrollTop/6}deg)`
@@ -91,6 +91,7 @@ window.addEventListener("scroll" , function() {
   // scorllTop / (전체 화면 높이 - 실제 보이는 화면 높이) * 100
   let persent = Math.ceil(scrollTop / (document.body.scrollHeight - window.outerHeight) * 100)
   bar.style.width = `${persent}%`
+  scale_video.style.opacity = persent*0.025
 
   console.log(`${persent}%`)
 
