@@ -65,6 +65,7 @@ app.get('/', async (req, res) => {
             const plusDeathCnt = deathCnt1 - deathCnt2
             const plusExamCnt = examCnt1 - examCnt2
             const plusClearCnt = clearCnt1 - clearCnt2
+            
 
             // resolve -> return
             resolve({

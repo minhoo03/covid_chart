@@ -536,3 +536,23 @@ header {
         width: 100vw;
     }
 }
+
+.man {
+    opacity: 0;
+}
+
+.zoom {
+    transition: 1s;
+    animation: marker 1s forwards;
+}
+
+@keyframes marker {
+    from {
+        opacity: 0;
+        margin-top: 100px;
+    }
+    to {
+        opacity: 1;
+        margin: 0;
+    }
+}

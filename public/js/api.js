@@ -1,3 +1,6 @@
+
+
+
 let loading
 
 let seoulMap
@@ -16,6 +19,7 @@ let parallax_title2
 
 
 let protect_title
+let man
 
 let x = 0
 let y = 0
@@ -44,6 +48,9 @@ window.onload = function(){
   seoulMap = document.getElementsByClassName("seoulMap")[0]
   text_relactive = document.getElementsByClassName("text_relactive")[0]
   logoNav = document.getElementsByClassName("logoNav")[0]
+
+  man = document.getElementsByClassName("man")[0]
+
 
   // 이 함수 실행 중 X : 마우스 움직일 시 mouseFunc 실행
   window.addEventListener("mousemove", mouseFunc, false)
@@ -113,6 +120,10 @@ window.addEventListener("scroll" , function() {
     protect_title.style.animation="fadeUpOp1 1s forwards"
   }
 
+  let yBounding = man.getBoundingClientRect().top
+  if(yBounding < window.innerHeight * 0.5){
+    man.classList.add('zoom')
+}
 });
 
 $(document).ready(function() {
@@ -166,4 +177,3 @@ document.getElementById('menu').addEventListener('click', menuToggle);
 //  }  
 
 // motion
-
