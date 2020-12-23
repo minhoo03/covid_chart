@@ -1,10 +1,10 @@
-let text_if
-let pipe
-let bg
+let loading
+
 let seoulMap
 let text_relactive
 let logoNav
 let nasa
+let nasa2
 
 let scale_video
 let title
@@ -25,10 +25,8 @@ let speed = 0.015
 
 window.onload = function(){
   // class 는 중첩 (배열로 넘어옴)
-  pipe = document.getElementsByClassName('pipe')[0]
-  bg = document.getElementsByClassName('bg')[0]
-  text_if = document.getElementsByClassName("text_if")[0]
   nasa = document.getElementsByClassName("nasa")[0]
+  nasa2 = document.getElementsByClassName("nasa2")[0]
   
 
   scale_video  = document.getElementsByClassName("scale_video")[0]
@@ -56,15 +54,13 @@ window.onload = function(){
     y = (e.clientY - window.innerHeight / 2)
   }
   loop()
+  loading = document.querySelector('.loading')
+  loading.style.display="none"
 }
 
 function loop(){
   mx += (x - mx) * speed
   my += (y - my) * speed
-
-  text_if.style.transform = `translate(${-mx/5}px, ${-my/5}px)`
-  pipe.style.transform = `translate(${mx/14}px, ${my/15}px)`
-  bg.style.transform = `translate(${-mx/24}px, ${-my/24}px)`
 
   title.style.transform = "translate3d("+ -(mx/4) +"px,0px,0) rotate3d(0,1,0,"+ -mx / 20 +"deg)";
 
@@ -87,6 +83,7 @@ window.addEventListener("scroll" , function() {
   parallax_title.style.transform = `translate(0, ${scrollTop / 8}px)`
   parallax_title2.style.transform = `translate(0, ${scrollTop / 8}px)`
   nasa.style.transform = `translate(0, ${scrollTop / -2}px) rotate(${scrollTop/6}deg)`
+  nasa2.style.transform = `translate(0, ${scrollTop / 5}px) rotate(${scrollTop/20}deg)`
 
   // scorllTop / (전체 화면 높이 - 실제 보이는 화면 높이) * 100
   let persent = Math.ceil(scrollTop / (document.body.scrollHeight - window.outerHeight) * 100)

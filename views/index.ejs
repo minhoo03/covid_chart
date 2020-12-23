@@ -12,28 +12,51 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
     <style>
-      .topNav{
-        position: fixed;
+      .loading{
         top: 0;
-        left: 10%;
-        z-index: 100;
+        width: 100vw;
+        height: 100vh;
+        background: #fff;
+        z-index: 999;
       }
-      .topNav > h2 > a > img{
+      .videoTitle{
+        width: 100%;
         height: 100px;
+        line-height: 100px;
+        background: #000;
+        opacity: 0.5;
+        text-align: center;
+        position: absolute;
+        color: #fff;
+        left: 50%;
+        top: 50%;
+        font-size: 32px;
+        font-weight: bold;
+        transform: translate(-50%, -50%);
       }
     </style>
 </head>
 <body>
+  <div class="loading">loading...</div>
   <div class="progress">
     <div class="bar"></div>
 </div>
 <div class="wrap">
-    <nav class="topNav"><h2 class="logo"><a href="#"><img src="./img/text_if.png" alt=""></a></h2></nav>
-    <header class="snap" style="background-color: #000;">
-        <div class="layer"></div>
-        <img src="./img/if_covid19.png" alt="text_if" class="text_if">
-        <img src="./img/pipe.png" alt="pipe" class="pipe">
-        <img src="./img/doctor_black.jpg" alt="wall" class="bg">     
+    <header class="snap">
+      <div class="gallery">
+        <div class="pic"></div>
+        <div class="pic2">
+          <div class="pic3">
+            <div class="pic4"></div>
+          </div>
+        </div>
+      </div>
+      <div class="videoBox">
+        <div class="videoTitle">What? Covid19?</div>
+        <video autoplay controls loop muted poster="aaa" preload="bbb" class="boxVideo">
+          <source src="./videos/walk.mp4">
+        </video>
+      </div>
     </header>
 
     <section class="site_section">
@@ -47,9 +70,6 @@
       <article class="scale_content">
         <h2 class="scale_video">
           <img src="./img/protect_man.jpg" alt="">
-          <!-- <video autoplay controls loop muted poster="aaa" preload="bbb">
-            <source src="./videos/maskMp4.mp4">
-          </video> -->
         </h2>
       </article>
       <article class="parallax">
@@ -58,6 +78,9 @@
           <h2 class="parallax_title"><a href="##">The fatality rate is low.<br>Corona virus is a highly contagious virus.<br>So you have to wear a mask.</a></h2>
           <div class="parallax_box">
             <h2><img src="./img/mask_girl.jpg" alt="mask_girl" class="mask_girl"></h2>
+            <video autoplay controls loop muted poster="aaa" preload="bbb" class="nasa2">
+              <source src="./videos/nasa.mp4">
+            </video>
           </div>
         </div>
         <div class="second_parallax">
@@ -69,12 +92,9 @@
       </article>
 
       <article class="protect">
-        <h1 class="protect_title">
-          Would you like<br> to see the corona map?
-        </h1>
-          <img src="./img/letsCovid.png" alt="lets" class="lets">
-          <img src="./img/letsCovid.png" alt="lets" class="lets2">
-          <img src="./img/sit_down_man_nBg.png" alt="man" class="man">
+        <!-- 스크롤 캔버스 그림그리기 -->
+        <h2 class="protect_title">Would you like<br> to see the corona map?</h2>
+        <img src="./img/sit_down_fin.png" alt="" class="man">
       </article>
 
       
