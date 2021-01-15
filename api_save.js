@@ -8,6 +8,7 @@ let month = today.getMonth() + 1;
 let date = today.getDate(); 
 let day = `${year}${month}${date}`
 
+
 const getCovidData = async () => {
     const data = await axios.get(
         `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson`,
@@ -16,8 +17,8 @@ const getCovidData = async () => {
             serviceKey: decodeURIComponent(API_KEY),
             pageNo: 1,
             numOfRows: 10,
-            startCreateDt: day-2,
-            endCreateDt: day
+            startCreateDt: 20210114,
+            endCreateDt: 20210115
         }}
     )
     return data
@@ -26,10 +27,15 @@ const getCovidData = async () => {
 // covid data
 getCovidData().then(r => {
 
-    const { decideCnt, deathCnt, clearCnt, examCnt } = r.data.response.body.items.item
-    console.log(decideCnt, deathCnt, clearCnt, examCnt)
+    // console.log(r.data.response.body.items.item)
+    console.log(r.data.response.body.items.item[0])
 
-      
+    // const { decideCnt, deathCnt, clearCnt, examCnt } = r.data.response.body.items.item
+    // console.log(decideCnt, deathCnt, clearCnt, examCnt)
+
+    
+ 
+
     // // 확진
     // let todayInfected = r.data.response.body.items.item[0].decideCnt
     // let yesterdayInfected = r.data.response.body.items.item[1].decideCnt

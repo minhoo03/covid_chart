@@ -21,8 +21,12 @@ app.get('/', async (req, res) => {
         date = `0${date}`
     }
 
+    if(month < 10){
+        month = `0${month}`
+    }
+
     let day = `${year}${month}${date}`
-    let day_2 = day-2
+    let day_2 = `${year}${month}${date-2}`
     let day2 = `${year}.${month}.${date}`
 
 
@@ -31,20 +35,18 @@ app.get('/', async (req, res) => {
     const getCovidData = async () => {
         const data = await axios.get(
             `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson`,
-            {
-                params: {
-                    // encode
-                    serviceKey: decodeURIComponent(API_KEY1),
-                    pageNo: 1,
-                    numOfRows: 10,
-                    startCreateDt: day_2,
-                    endCreateDt: day
-                }
-            }
+            {params: {
+                // encode
+                serviceKey: decodeURIComponent(API_KEY1),
+                pageNo: 1,
+                numOfRows: 10,
+                startCreateDt: day_2,
+                endCreateDt: day
+            }}
         )
+
         console.log(day)
-        console.log(day-2)
-        
+        console.log(day_2)
         return data
     }
 
@@ -57,6 +59,13 @@ app.get('/', async (req, res) => {
                 { decideCnt: decideCnt1, deathCnt: deathCnt1, clearCnt: clearCnt1, examCnt: examCnt1 },
                 { decideCnt: decideCnt2, deathCnt: deathCnt2, clearCnt: clearCnt2, examCnt: examCnt2 }
             ] = r.data.response.body.items.item
+
+            console.log(r.data)
+
+
+            // const { decideCnt: decideCnt1, deathCnt: deathCnt1, clearCnt: clearCnt1, examCnt: examCnt1 } = r.data.response.body.items.item[0]
+            // const { decideCnt: decideCnt2, deathCnt: deathCnt2, clearCnt: clearCnt2, examCnt: examCnt2 } = r.data.response.body.items.item[1]
+
 
             // r.data...item[0][1] 와 같다
 
@@ -80,6 +89,7 @@ app.get('/', async (req, res) => {
             })
         })
     })
+
 
     // rendering -> result 모든 데이터
     res.render("index", { ...result, day2 })

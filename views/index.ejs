@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>간단한 지도 표시하기</title>
+    <title>20306 김민후 코로나맵</title>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=lmp52pzuxg"></script>
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -52,7 +52,7 @@
         </div>
       </div>
       <div class="videoBox">
-        <div class="videoTitle">What? Covid19?</div>
+        <div class="videoTitle">Covid19 map</div>
         <video autoplay controls loop muted poster="aaa" preload="bbb" class="boxVideo">
           <source src="./videos/walk.mp4">
         </video>
@@ -91,11 +91,10 @@
         </div>
       </article>
 
-      <article class="protect">
-        <!-- 스크롤 캔버스 그림그리기 - 제외-->
+      <!-- <article class="protect">
         <h2 class="protect_title">Would you like<br> to see the corona map?</h2>
         <img src="./img/markerRedFin.png" alt="" class="man">
-      </article>
+      </article> -->
 
       
     </section>
@@ -107,7 +106,7 @@
           <article class="content">
             <ul class="covidTable">
               <li class="decide">
-                 <span>확진환자</span>
+                 <span>decide</span>
                  <h3><%= decideCnt %></h3>
                  <% if(plusDecideCnt > 0) { %>
                   <p><%= plusDecideCnt %> ▲</p>
@@ -116,7 +115,7 @@
                  <% } %>
               </li>
               <li class="exam">
-                 <span>검사중</span>
+                 <span>Checking</span>
                  <h3><%= examCnt %></h3>
                  <% if(plusExamCnt > 0) { %>
                   <p><%= plusExamCnt %> ▲</p>
@@ -125,7 +124,7 @@
                  <% } %>
               </li>
               <li class="clear">
-                 <span>격리해제</span>
+                 <span>clear</span>
                  <h3><%= clearCnt %></h3>
                  <% if(plusClearCnt > 0) { %>
                   <p><%= plusClearCnt %> ▲</p>
@@ -134,7 +133,7 @@
                  <% } %>
               </li>
               <li class="death">
-                 <span>사망자</span>
+                 <span>death</span>
                  <h3><%= deathCnt %></h3>
                  <% if(plusDeathCnt > 0) { %>
                   <p><%= plusDeathCnt %> ▲</p>
@@ -146,7 +145,7 @@
           </article>
         </div>
         <div class="infobox">
-          <div class="infoTitle">현재날짜</div>
+          <div class="infoTitle">Today</div>
           <div class="infoTitle"><%= day2 %></div>
         </div>
         <div id="map" style="width:100%;height:100%;"></div>
