@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>20306 김민후 코로나맵</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="./slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+</head>
+<body>
+  <div class="container">
+      <section class="center slider">
+        <div>
+          <h1 class="content_title">
+            <p>오늘은,</p>
+            <span><%= decideCnt %>명</span>
+            <p>이래도 밖에 나가실겁니까?</p>
+          </h1> 
+        </div>
+        <div>
+          <div style="width:100%; padding: 20% 0px;">
+            <canvas id="canvas"></canvas>
+        </div>
+        </div>
+        <div>
+          <img src="http://placehold.it/350x300?text=3">
+        </div>
+        <div>
+          <img src="http://placehold.it/350x300?text=4">
+        </div>
+        <div>
+          <img src="http://placehold.it/350x300?text=5">
+        </div>
+      </section>
+  </div>
+</body>
+<script>
+    $(".center").slick({
+        dots: true,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      });
+</script>
+
+<script>
+
+  let dd = {
+      "test":38000
+  }
+
+  new Chart(document.getElementById("canvas"), {
+      type: 'line',
+      data: {
+          labels: ['1', '2', '3', '4', '5', '6', '7'],
+          datasets: [{
+              label: '테스트 데이터셋',
+              data: [
+                  dd.test,
+                  38156,
+                  38453,
+                  39000,
+                  39122,
+                  39443,
+                  39943
+              ],
+              borderColor: "rgba(255, 201, 14, 1)", // 그래프 선
+              backgroundColor: "rgba(255, 201, 14, 0.5)", // 그래프 bg
+              fill: false, // 색 채우기
+              lineTension: 0
+          }]
+      },
+      options: {
+          responsive: true, // 화면에 채우기
+          title: {
+              display: true,
+              text: '라인 차트 테스트'
+          },
+          tooltips: {
+              mode: 'index',
+              intersect: false,
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          },
+          scales: {
+              xAxes: [{
+                  display: true,
+                  scaleLabel: {
+                      display: false,
+                      labelString: 'x축'
+                  }
+              }],
+              yAxes: [{
+                  display: true,
+                  ticks: {
+                      suggestedMin: 38000,
+                  },
+                  scaleLabel: {
+                      display: false,
+                      labelString: 'y축'
+                  }
+              }]
+          }
+      }
+  });
+  
+  </script>
+</html>
+
+<!-- <h1 class="content_title">
+  <span><%= decideCnt %></span>
+</h1> -->
+<!-- 
+<article class="content">
+  <ul class="covidTable">
+    <li class="decide">
+       <span>decide</span>
+       <h3><%= decideCnt %></h3>
+       <% if(plusDecideCnt > 0) { %>
+        <p><%= plusDecideCnt %> ▲</p>
+       <% } else { %>
+        <p><%= plusDecideCnt %> ▼</p>
+       <% } %>
+    </li>
+    <li class="exam">
+       <span>Checking</span>
+       <h3><%= examCnt %></h3>
+       <% if(plusExamCnt > 0) { %>
+        <p><%= plusExamCnt %> ▲</p>
+       <% } else { %>
+        <p><%= plusExamCnt %> ▼</p>
+       <% } %>
+    </li>
+    <li class="clear">
+       <span>clear</span>
+       <h3><%= clearCnt %></h3>
+       <% if(plusClearCnt > 0) { %>
+        <p><%= plusClearCnt %> ▲</p>
+       <% } else { %>
+        <p><%= plusClearCnt %> ▼</p>
+       <% } %>
+    </li>
+    <li class="death">
+       <span>death</span>
+       <h3><%= deathCnt %></h3>
+       <% if(plusDeathCnt > 0) { %>
+        <p><%= plusDeathCnt %> ▲</p>
+       <% } else { %>
+        <p><%= plusDeathCnt %> ▼</p>
+       <% } %>
+    </li>
+</ul>
+</article> -->

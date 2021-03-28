@@ -26,8 +26,11 @@ app.get('/', async (req, res) => {
     }
 
     let day = `${year}${month}${date}`
-    let day_2 = `${year}${month}${date-2}`
+    let day_2 = `${year}${month}${date-5}`
     let day2 = `${year}.${month}.${date}`
+
+
+    let test = 38001
 
 
 
@@ -45,8 +48,7 @@ app.get('/', async (req, res) => {
             }}
         )
 
-        console.log(day)
-        console.log(day_2)
+      
         return data
     }
 
@@ -57,8 +59,12 @@ app.get('/', async (req, res) => {
             // 1 : 오늘, 2 : 어제
             const [
                 { decideCnt: decideCnt1, deathCnt: deathCnt1, clearCnt: clearCnt1, examCnt: examCnt1 },
-                { decideCnt: decideCnt2, deathCnt: deathCnt2, clearCnt: clearCnt2, examCnt: examCnt2 }
+                { decideCnt: decideCnt2, deathCnt: deathCnt2, clearCnt: clearCnt2, examCnt: examCnt2 },
+                { decideCnt: decideCnt3, deathCnt: deathCnt3, clearCnt: clearCnt3, examCnt: examCnt3 },
+                { decideCnt: decideCnt4, deathCnt: deathCnt4, clearCnt: clearCnt4, examCnt: examCnt4 },
+                { decideCnt: decideCnt5, deathCnt: deathCnt5, clearCnt: clearCnt5, examCnt: examCnt5 }
             ] = r.data.response.body.items.item
+
 
             console.log(r.data)
 
@@ -78,14 +84,30 @@ app.get('/', async (req, res) => {
 
             // resolve -> return
             resolve({
-                decideCnt: decideCnt1,
-                deathCnt: deathCnt1,
-                examCnt: examCnt1,
-                clearCnt: clearCnt1,
+                decideCnt1: decideCnt1,
+                deathCnt1: deathCnt1,
+                examCnt1: examCnt1,
+                clearCnt1: clearCnt1,
                 plusDecideCnt,
                 plusDeathCnt,
                 plusExamCnt,
                 plusClearCnt,
+                decideCnt2: decideCnt2,
+                deathCnt2: deathCnt2,
+                examCnt2: examCnt2,
+                clearCnt2: clearCnt2,
+                decideCnt3: decideCnt3,
+                deathCnt3: deathCnt3,
+                clearCnt3: clearCnt3,
+                examCnt3: examCnt3,
+                decideCnt4: decideCnt4,
+                deathCnt4: deathCnt4,
+                clearCnt4:clearCnt4,
+                examCnt4: examCnt4,
+                decideCnt5: decideCnt5,
+                deathCnt5: deathCnt5,
+                clearCnt5: clearCnt5,
+                examCnt5: examCnt5,
             })
         })
     })

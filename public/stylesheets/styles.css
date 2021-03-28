@@ -3,72 +3,60 @@
     padding: 0;
     list-style: none;
     text-decoration: none;
-    overflow: hidden;
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 
-/* map 전체 틀 */
-.container {
-    position: relative;
+html,
+body {
     width: 100%;
-    height: 100vh;
-    margin: 0 auto;
+    height: 100%;
 }
-/* 확진자 표 */
-.navbar {
-    z-index: 950;
-    position: absolute;
-    top: 0;
-    z-index: 100;
-    height: 100px;
+
+body {
+    background: linear-gradient(70deg, #b8b5ff, #f6dfeb);
+}
+.container {
     width: 100%;
-    background: #262526;
-    color: #fff;
-    font-size: 25px;
+    height: 100%;
+}
+
+.covid_slider {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100vh;
 }
-/* 날짜 */
-.infobox {
-    position: absolute;
-    top: 100px;
-    z-index: 100;
-    background: #fff;
-    left: 20px;
-    padding: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    text-align: center;
+.covid_chart {
+    width: 100%;
+    height: 100vh;
 }
 
-.infoTitle {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.marker {
-    width: 24px;
-    height: 24px;
-    border-radius: 50px;
-    background: red;
-    opacity: 0.6;
-    border: 1px solid #000;
-}
-/* 확진자 관련 */
-.navbar ul {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    width: 600px;
+.covid_chart div {
+    width: 90%;
     margin: 0 auto;
 }
-.navbar ul > li > span {
-    font-size: 14px;
-}
-.navbar ul > li > p {
-    font-size: 12px;
+
+/* 확진자 표 */
+
+.content_title {
+    /* color: #fff; */
+    color: white; /* Fallback: assume this color ON TOP of image */
+
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 42px;
+    height: 100%;
+    padding: 20% 0px;
+    text-align: center;
 }
 
+.content_title img {
+    width: 200px;
+    margin: 0 auto;
+}
+
+/* 확진자 관련 */
 .decide {
     color: rgb(223, 35, 35);
 }
@@ -79,480 +67,39 @@
     color: rgb(49, 49, 238);
 }
 
-/* interactive*/
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-}
-body {
-    transition: 2s;
-    position: relative;
-    background: #000;
-}
+/* slick */
 
-.snap {
-    position: relative;
-    height: 100vh;
-}
-
-/* header > */
-header {
-    overflow: hidden;
-    min-width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background: #000;
-}
-
-.gallery {
-    position: relative;
-    width: 30vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    z-index: 900;
-}
-
-.pic {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    left: 2vw;
-    background-image: url('../img/protect_woman.jpg');
-    background-size: cover;
-
-    opacity: 0;
-    transition: 1s;
-    animation: flyPhoto 1s forwards;
-    animation-delay: 0.75s;
-}
-
-.pic2 {
-    position: absolute;
-    margin-top: 20px;
-    width: 260px;
-    height: 260px;
-    right: 2vw;
-    z-index: 11;
-    transform: rotate(10deg);
-    background: #fff;
-
-    opacity: 0;
-    transition: 1s;
-    animation: flyPhoto 1s forwards;
-    animation-delay: 1.25s;
-}
-
-.pic3 {
-    position: relative;
+.slider {
     width: 100%;
-    height: 100%;
-    background: #fff;
+    margin: 0 auto;
 }
 
-.pic4 {
-    width: 250px;
-    height: 250px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-image: url('../img/doctor.jpg');
-    background-size: cover;
+.slick-slide {
+    margin: 0px 20px;
 }
 
-.videoBox {
-    position: relative;
-    margin: 20px;
-    width: 65vw;
-    height: 80vh;
-    background: #000;
-}
-
-.boxVideo {
+/* .slick-slide img {
     width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-/* 
-.layer {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    background: #000;
-    z-index: 200;
-    animation: backgroundFadeIn 3s 0s forwards;
 } */
 
-/* 2.snap */
-
-/* animation */
-
-@keyframes upDown {
-    0% {
-        margin-bottom: 70px;
-    }
-
-    50% {
-        margin-top: 70px;
-    }
-
-    100% {
-        margin-bottom: 100px;
-    }
+.slick-prev:before,
+.slick-next:before {
+    color: black;
 }
 
-@keyframes backgroundFadeIn {
-    0% {
-        width: 100%;
-        height: 100vh;
-    }
-    100% {
-        width: 100%;
-        height: 100vh;
-        background: none;
-    }
+.slick-slide {
+    transition: all ease-in-out 0.3s;
+    opacity: 0.2;
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+.slick-active {
+    opacity: 0.5;
 }
 
-@keyframes fadeInRotate {
-    0% {
-        margin-top: 150px;
-        transform: rotate(-25deg);
-        opacity: 0;
-    }
-    100% {
-        margin-top: 0;
-        transform: rotate(0deg);
-        opacity: 0.3;
-    }
-}
-
-@keyframes fadeInOp5 {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0.05;
-    }
-}
-
-@keyframes fadeUp_Tang {
-    0% {
-        margin-top: 150px;
-    }
-    65% {
-        margin-bottom: 200px;
-    }
-    100% {
-        margin-bottom: 150px;
-    }
-}
-@keyframes fadeUpOp1 {
-    0% {
-        margin-top: 100px;
-    }
-
-    100% {
-        margin-bottom: 100px;
-        opacity: 1;
-    }
-}
-
-@keyframes fadeUpOp2 {
-    0% {
-        margin-top: 150px;
-    }
-
-    100% {
-        margin-bottom: 150px;
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOutOp1 {
-    0% {
-        margin-bottom: 150px;
-    }
-
-    100% {
-        margin-top: 150px;
-        opacity: 0;
-    }
-}
-
-@keyframes fadeUp {
-    0% {
-        margin-top: 150px;
-    }
-
-    100% {
-        margin-bottom: 150px;
-    }
-}
-
-@media (max-width: 950px) {
-    .text_if {
-        width: 300px;
-    }
-    .pipe {
-        display: none;
-    }
-}
-
-/* progress */
-
-.progress {
-    position: fixed;
-    width: 100%;
-    height: 5px;
-    top: 0;
-    left: 0;
-    background: black;
-    z-index: 990;
-}
-.bar {
-    position: fixed;
-    width: 100%;
-    height: 6px;
-    border-radius: 0 10px 10px 0;
-    top: 0;
-    left: 0;
-    background: yellow;
-    z-index: 991;
-}
-
-/* section_site */
-.site_section {
-    width: 100%;
-    height: 100%;
-}
-
-.title {
-    transition: 1s;
-    opacity: 0;
-    z-index: 300;
-}
-
-.title > img {
-    height: 100px;
-}
-
-.intro_title {
-    margin: 100px 0px 100px 0px;
-    padding: 100px 0px 100px 0px;
-    height: 300px;
-    color: white;
-    text-align: center;
-    line-height: 300px;
-
-    z-index: 1;
-    transform-style: preserve-3d;
-    perspective: 300px;
-}
-
-.scale_content {
-    position: relative;
-    padding-top: 200px;
-    overflow: hidden;
-}
-
-.scale_video {
-    pointer-events: none;
-    height: 500px;
-    text-align: center;
-}
-
-/* section > parallax */
-
-.parallax {
-    margin: 300px 0px 200px 0px;
-}
-
-.first_parallax {
-    opacity: 0;
-    position: relative;
-    height: 700px;
-}
-
-.second_parallax {
-    opacity: 0;
-    position: relative;
-    height: 700px;
-}
-
-.parallax_title {
-    position: absolute;
-    /* top: 200px; */
-    right: 30%;
-    text-align: right;
-    z-index: 900;
-    font-size: 40px;
-}
-
-.parallax_title a {
-    color: #fff;
-}
-
-.parallax_box > h2 > img {
-    position: absolute;
-    top: 100px;
-    right: 0;
-    width: 500px;
-    height: 700px;
-    object-fit: fill;
-    z-index: 800;
-}
-
-/*  */
-.parallax_title2 {
-    position: absolute;
-    /* bottom: 200px; */
-    left: 30%;
-    text-align: left;
-    z-index: 900;
-    font-size: 40px;
-}
-
-.parallax_title2 a {
-    color: #fff;
-}
-
-.parallax_box2 > h2 > img {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    width: 500px;
-    height: 700px;
-    object-fit: fill;
-    z-index: 800;
-}
-/*  */
-
-.nasa {
-    position: absolute;
-    right: 100px;
-    bottom: -150px;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.nasa2 {
-    position: absolute;
-    left: 150px;
-    top: 50px;
+.slick-current {
     opacity: 1;
 }
 
-.protect {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background: #000;
-    padding: 200px 0px 0px 0px;
-}
-
-.protect_title {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    color: #fff;
-    transform: translate(-50%, -50%);
-}
-
-.protect > .man {
-    position: absolute;
-    z-index: 900;
-    width: 500px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@keyframes rotateAuto {
-    0% {
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(90deg);
-    }
-    50% {
-        transform: rotate(180deg);
-    }
-    75% {
-        transform: rotate(270deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes flyPhoto {
-    from {
-        margin-bottom: 500px;
-    }
-    to {
-        opacity: 1;
-        margin: 0;
-    }
-}
-
-.protect_title {
-    color: #fff;
-    font-size: 42px;
-    position: absolute;
-    right: 100px;
-    top: 100px;
-    z-index: 700;
-    opacity: 0;
-}
-
-@media (max-width: 768px) {
-    .navbar {
-        font-size: 12px;
-    }
-    .navbar ul {
-        width: 400px;
-    }
-
-    .gallery {
-        display: none;
-    }
-    .videoBox {
-        width: 100vw;
-    }
-}
-
-.man {
-    opacity: 0;
-}
-
-.zoom {
-    transition: 1s;
-    animation: marker 1s forwards;
-}
-
-@keyframes marker {
-    from {
-        opacity: 0;
-        margin-top: 100px;
-    }
-    to {
-        opacity: 1;
-        margin: 0;
-    }
+.slider li {
+    display: none;
 }

@@ -5,210 +5,151 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>20306 김민후 코로나맵</title>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=lmp52pzuxg"></script>
-    <link rel="stylesheet" href="/stylesheets/styles.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
-    <style>
-      .loading{
-        top: 0;
-        width: 100vw;
-        height: 100vh;
-        background: #fff;
-        z-index: 999;
-      }
-      .videoTitle{
-        width: 100%;
-        height: 100px;
-        line-height: 100px;
-        background: #000;
-        opacity: 0.5;
-        text-align: center;
-        position: absolute;
-        color: #fff;
-        left: 50%;
-        top: 50%;
-        font-size: 32px;
-        font-weight: bold;
-        transform: translate(-50%, -50%);
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 </head>
 <body>
-  <div class="loading">loading...</div>
-  <div class="progress">
-    <div class="bar"></div>
-</div>
-<div class="wrap">
-    <header class="snap">
-      <div class="gallery">
-        <div class="pic"></div>
-        <div class="pic2">
-          <div class="pic3">
-            <div class="pic4"></div>
-          </div>
+  <div class="container">
+    <div class="covid_slider">
+      <section class="center slider">
+        <div>
+          <h1 class="content_title">
+            <img src="https://image.flaticon.com/icons/png/512/2750/2750835.png" alt="">
+            <p>확진자</p>
+            <span><%= decideCnt1 %>명</span>
+            <% if(plusDecideCnt > 0) { %>
+              <p><%= plusDecideCnt %> ▲</p>
+             <% } else { %>
+              <p><%= plusDecideCnt %> ▼</p>
+             <% } %>
+          </h1> 
         </div>
+        <div>
+          <h1 class="content_title">
+            <img src="https://cdn3.iconfinder.com/data/icons/line/36/document_magnify-512.png" alt="">
+            <p>검사중</p>
+            <span><%= examCnt1 %>명</span>
+            <% if(plusExamCnt > 0) { %>
+              <p><%= plusExamCnt %> ▲</p>
+            <% } else { %>
+              <p><%= plusExamCnt %> ▼</p>
+            <% } %>
+          </h1> 
+        </div>
+        <div>
+          <h1 class="content_title">
+            <img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/freedom-1466675-1242454.png" alt="">
+            <p>격리해제</p>
+            <span><%= clearCnt1 %>명</span>
+            <% if(plusClearCnt > 0) { %>
+             <p><%= plusClearCnt %> ▲</p>
+            <% } else { %>
+             <p><%= plusClearCnt %> ▼</p>
+            <% } %>
+          </h1> 
+        </div>
+        <div>
+          <h1 class="content_title">
+            <img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/angel-wings-1848031-1567490.png" alt="">
+            <p>사망자</p>
+            <span><%= deathCnt1 %>명</span>
+            <% if(plusDeathCnt > 0) { %>
+             <p><%= plusDeathCnt %> ▲</p>
+            <% } else { %>
+             <p><%= plusDeathCnt %> ▼</p>
+            <% } %>
+          </h1> 
+        </div>
+      </section>
+    </div>
+      <div class="covid_chart">
+        <div>
+          <canvas id="canvas"></canvas>
       </div>
-      <div class="videoBox">
-        <div class="videoTitle">Covid19 map</div>
-        <video autoplay controls loop muted poster="aaa" preload="bbb" class="boxVideo">
-          <source src="./videos/walk.mp4">
-        </video>
       </div>
-    </header>
-
-    <section class="site_section">
-      <article class="intro_title">
-        <h2 class="title"><img src="./img/Can_we_covid.svg" alt=""></h2>
-
-        <video autoplay controls loop muted poster="aaa" preload="bbb" class="nasa">
-          <source src="./videos/nasa.mp4">
-        </video>
-      </article>
-      <article class="scale_content">
-        <h2 class="scale_video">
-          <img src="./img/protect_man.jpg" alt="">
-        </h2>
-      </article>
-      <article class="parallax">
-        <h1 style="color: #fff; text-align: center; font-size: 42px;">ABOUT</h1>
-        <div class="first_parallax">
-          <h2 class="parallax_title"><a href="##">The fatality rate is low.<br>Corona virus is a highly contagious virus.<br>So you have to wear a mask.</a></h2>
-          <div class="parallax_box">
-            <h2><img src="./img/mask_girl.jpg" alt="mask_girl" class="mask_girl"></h2>
-            <video autoplay controls loop muted poster="aaa" preload="bbb" class="nasa2">
-              <source src="./videos/nasa.mp4">
-            </video>
-          </div>
-        </div>
-        <div class="second_parallax">
-          <div class="parallax_box2">
-            <h2><img src="./img/santizer.jpg" alt="mask_girl" class="santizer"></h2>
-          </div>
-          <h2 class="parallax_title2"><a href="##">Hand washing, you need to<br>All the viruses are on your hands.<br>hand sanitizer.</a></h2>
-        </div>
-      </article>
-
-      <!-- <article class="protect">
-        <h2 class="protect_title">Would you like<br> to see the corona map?</h2>
-        <img src="./img/markerRedFin.png" alt="" class="man">
-      </article> -->
-
-      
-    </section>
-    
-
-    <section class="snap">
-      <div class="container">
-        <div class="navbar">
-          <article class="content">
-            <ul class="covidTable">
-              <li class="decide">
-                 <span>decide</span>
-                 <h3><%= decideCnt %></h3>
-                 <% if(plusDecideCnt > 0) { %>
-                  <p><%= plusDecideCnt %> ▲</p>
-                 <% } else { %>
-                  <p><%= plusDecideCnt %> ▼</p>
-                 <% } %>
-              </li>
-              <li class="exam">
-                 <span>Checking</span>
-                 <h3><%= examCnt %></h3>
-                 <% if(plusExamCnt > 0) { %>
-                  <p><%= plusExamCnt %> ▲</p>
-                 <% } else { %>
-                  <p><%= plusExamCnt %> ▼</p>
-                 <% } %>
-              </li>
-              <li class="clear">
-                 <span>clear</span>
-                 <h3><%= clearCnt %></h3>
-                 <% if(plusClearCnt > 0) { %>
-                  <p><%= plusClearCnt %> ▲</p>
-                 <% } else { %>
-                  <p><%= plusClearCnt %> ▼</p>
-                 <% } %>
-              </li>
-              <li class="death">
-                 <span>death</span>
-                 <h3><%= deathCnt %></h3>
-                 <% if(plusDeathCnt > 0) { %>
-                  <p><%= plusDeathCnt %> ▲</p>
-                 <% } else { %>
-                  <p><%= plusDeathCnt %> ▼</p>
-                 <% } %>
-              </li>
-          </ul>
-          </article>
-        </div>
-        <div class="infobox">
-          <div class="infoTitle">Today</div>
-          <div class="infoTitle"><%= day2 %></div>
-        </div>
-        <div id="map" style="width:100%;height:100%;"></div>
-      </div>
-    </section>
-  <!-- data -->
+  </div>
 </body>
 <script>
-  const region = '서울'
-  const place = '서울 금천 디지털 컴플렉스'
-  const date = '오늘'
-  const lat = 37.485017
-  const lon = 126.901248
-
-  // for문을 이용하여 template에 region[i] 이런식으로 넣으면 될 것 같긴 함
-
-  var data = [
-    {
-      // axios fetch 후 for : axiosData(i) ↓ 대입
-        title : "서울", // region
-        content : "서울 남산", // place
-        date : "2020-11-23", // date
-        lat : 37.550027, //lat
-        lng : 126.992739 // lat -> lon
-    },
-    {
-        title : '서울',
-        content : "녹사평역",
-        date : "2020-11-23",
-        lat : 37.534680,
-        lng : 126.986688
-    },
-    {
-        title : '서울',
-        content : "상봉",
-        date : "2020-11-23",
-        lat : 37.596062,
-        lng : 127.085510
-    },
-    {
-        title : '서울',
-        content : "가산",
-        date : "2020-11-23",
-        lat : 37.479135,
-        lng : 126.883928
-    },
-    {
-        title : '서울',
-        content : "종로",
-        date : "2020-11-23",
-        lat : 37.595341, 
-        lng : 126.977854
-    },
-    {
-        title : region,
-        content : place,
-        date : date,
-        lat : lat, 
-        lng : lon
-    },
-]
+    $(".center").slick({
+        dots: true,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 3,
+        slidesToScroll: 3
+      });
 </script>
 
-<script src="/js/map.js"></script>
-<script src="/js/api.js"></script>
+<script>
+
+  let dd = {
+    
+      "d1":<%=decideCnt1%>,
+      "d2":<%=decideCnt2%>,
+      "d3":<%=decideCnt3%>,
+      "d4":<%=decideCnt4%>,
+      "d5":<%=decideCnt5%>,
+  }
+
+  new Chart(document.getElementById("canvas"), {
+      type: 'line',
+      data: {
+          labels: ['1', '2', '3', '4', '5',],
+          datasets: [{
+              label: '5일전 ~ 오늘',
+              data: [
+                  dd.d5,
+                  dd.d4,
+                  dd.d3,
+                  dd.d2,
+                  dd.d1,
+              ],
+              borderColor: "rgba(255, 201, 14, 1)", // 그래프 선
+              backgroundColor: "rgba(255, 201, 14, 0.5)", // 그래프 bg
+              fill: false, // 색 채우기
+              lineTension: 0
+          }]
+      },
+      options: {
+          responsive: true, // 화면에 채우기
+          title: {
+              display: true,
+              text: '코로나 확진자'
+          },
+          tooltips: {
+              mode: 'index',
+              intersect: false,
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          },
+          scales: {
+              xAxes: [{
+                  display: true,
+                  scaleLabel: {
+                      display: false,
+                      labelString: '날짜'
+                  }
+              }],
+              yAxes: [{
+                  display: true,
+                  ticks: {
+                      suggestedMin: 100000,
+                  },
+                  scaleLabel: {
+                      display: false,
+                      labelString: '확진자 수'
+                  }
+              }]
+          }
+      }
+  });
+  
+  </script>
 </html>
