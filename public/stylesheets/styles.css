@@ -103,3 +103,43 @@ body {
 .slider li {
     display: none;
 }
+
+.slick-arrow {
+    z-index: 999; /* prev버튼은 위치 이동시 이미지 뒤로 숨겨짐 */
+    position: absolute; /* 원하는 위치에 지정  */
+    bottom: 2%;
+    width: 30px;
+    height: 30px;
+}
+.slick-prev.slick-arrow {
+    /* prev 이전 */
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    right: 200px;
+    background: none;
+    color: #fff;
+    border: none;
+}
+
+.slick-prev.slick-arrow:focus,
+.slick-next.slick-arrow:focus {
+    outline: 0;
+}
+
+.slick-next.slick-arrow {
+    /* next 다음 */
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    right: 100px;
+    background: none;
+    color: #fff;
+    border: none;
+}
+
+.slick-next.slick-arrow:hover,
+.slick-prev.slick-arrow:hover {
+    color: #e2c7b3;
+    transform: scale(1.1);
+}
